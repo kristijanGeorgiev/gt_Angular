@@ -1,0 +1,18 @@
+<div class="dashboard-container">
+  <div class="dashboard-main">
+    <main class="content">
+      <div class="services-grid">
+        <div
+          class="service-box"
+          *ngFor="let service of services"
+          (click)="goToAddBooking(service.serviceID)"
+          style="cursor: pointer;"
+        >
+          <img [src]="'https://localhost:7025/images/services/' + service.image" alt="{{ service.name }}" />
+          <h3 style="text-align: left;">{{ service.name }}</h3>
+          <p style="text-align: left;">{{ service.description }}</p>
+        </div>
+      </div>
+    </main>
+  </div>
+</div>

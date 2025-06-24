@@ -1,0 +1,68 @@
+<div class="profile-container" *ngIf="booking">
+  <h3 class="form-title">Edit Note</h3>
+  <form (ngSubmit)="saveChanges()" #form="ngForm">
+    <!-- Employee selection -->
+    <div class="form-row">
+      <div class="form-group">
+        <label for="employee">Select Employee:</label>
+        <select [(ngModel)]="selectedEmployeeId" name="employee" (change)="onEmployeeChange()">
+          <option *ngFor="let emp of assignedEmployees" [value]="emp.employeeId">
+            {{ emp.firstName }} {{ emp.lastName }}
+          </option>
+        </select>
+      </div>
+    </div>
+
+    <!-- Booking details -->
+    <div class="form-row">
+      <div class="form-group">
+        <label>Service Date:</label>
+        <p style="background-color: #fafafa;">{{ servicedate }}</p>
+      </div>
+      <div class="form-group">
+        <label>Service Name:</label>
+        <p style="background-color: #fafafa;">{{ serviceName }}</p>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label>Client Address:</label>
+        <p style="background-color: #fafafa;">{{ clientAddress }}</p>
+      </div>
+      <div class="form-group">
+        <label>Client Name:</label>
+        <p style="background-color: #fafafa;">{{ clientName }}</p>
+      </div>
+    </div>
+
+    <!-- Employee note editing -->
+    <div class="form-row" *ngIf="employeeNotes[selectedEmployeeId]">
+      <div class="form-group">
+        <label>Check In:</label>
+        <input [(ngModel)]="employeeNotes[selectedEmployeeId].checkIn" name="checkIn" type="time" required />
+      </div>
+      <div class="form-group">
+        <label>Check Out:</label>
+        <input [(ngModel)]="employeeNotes[selectedEmployeeId].checkOut" name="checkOut" type="time" required />
+      </div>
+    </div>
+
+    <div class="form-row" *ngIf="employeeNotes[selectedEmployeeId]">
+      <div class="form-group">
+        <label>Note Text:</label>
+        <textarea [(ngModel)]="employeeNotes[selectedEmployeeId].noteText" name="noteText" rows="4" required></textarea>
+      </div>
+    </div>
+
+    <!-- Buttons -->
+    <div class="form-row">
+      <div class="form-group">
+        <button style="background-color: #61affe; color: white;" type="button" (click)="back()">Back</button>
+      </div>
+      <div class="form-group">
+        <button style="background-color: #fdd5a3; color: white;" type="submit">Save</button>
+      </div>
+    </div>
+  </form>
+</div>

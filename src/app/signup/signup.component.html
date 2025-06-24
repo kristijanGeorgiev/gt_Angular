@@ -1,0 +1,112 @@
+<div class="background">
+  <div class="signup-container">
+    <form (ngSubmit)="register()" #form="ngForm">
+      <h3>Create Your Account</h3>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="firstName">First Name</label>
+          <input id="firstName" name="firstName" [(ngModel)]="user.firstName" required #firstNameRef="ngModel" />
+          <div *ngIf="firstNameRef.invalid && firstNameRef.touched" class="error-message">
+            First Name is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="lastName">Last Name</label>
+          <input id="lastName" name="lastName" [(ngModel)]="user.lastName" required #lastNameRef="ngModel" />
+          <div *ngIf="lastNameRef.invalid && lastNameRef.touched" class="error-message">
+            Last Name is required.
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            name="email"
+            [(ngModel)]="user.email"
+            required
+            #emailRef="ngModel"
+            email
+          />
+          <div *ngIf="emailRef.invalid && emailRef.touched" class="error-message">
+            <span *ngIf="emailRef.errors?.['required']">Email is required.</span>
+            <span *ngIf="emailRef.errors?.['email']">Invalid email format.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="address">Address</label>
+          <input id="address" name="address" [(ngModel)]="user.address" required #addressRef="ngModel" />
+          <div *ngIf="addressRef.invalid && addressRef.touched" class="error-message">
+            Address is required.
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="phoneNumber">Phone Number</label>
+          <input
+            id="phoneNumber"
+            name="phoneNumber"
+            [(ngModel)]="user.phoneNumber"
+            required
+            pattern="^07[0-9]{7}$"
+            #phoneRef="ngModel"
+          />
+          <div *ngIf="phoneRef.invalid && phoneRef.touched" class="error-message">
+            <span *ngIf="phoneRef.errors?.['required']">Phone number is required.</span>
+            <span *ngIf="phoneRef.errors?.['pattern']">Phone must start with 07 and be 9 digits.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-row">
+        <div class="form-group">
+          <label for="password">Password</label>
+          <input
+            type="password"
+            id="password"
+            name="password"
+            [(ngModel)]="user.password"
+            required
+            #passwordRef="ngModel"
+          />
+          <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error-message">
+            Password is required.
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="confirmPassword">Confirm Password</label>
+          <input
+            type="password"
+            id="confirmPassword"
+            name="confirmPassword"
+            [(ngModel)]="confirmPassword"
+            required
+            #confirmPasswordRef="ngModel"
+          />
+          <div *ngIf="confirmPasswordRef.invalid && confirmPasswordRef.touched" class="error-message">
+            Confirm Password is required.
+          </div>
+          <div *ngIf="passwordMismatch && confirmPasswordRef.touched" class="error-message">
+            Passwords do not match.
+          </div>
+        </div>
+      </div>
+
+      <input type="hidden" [(ngModel)]="user.role" name="role" />
+
+      <button type="submit" [disabled]="!form.valid || passwordMismatch">Sign Up</button>
+
+      <p *ngIf="error" class="error-message">{{ error }}</p>
+    </form>
+  </div>
+</div>
+
+<app-footer></app-footer>
+

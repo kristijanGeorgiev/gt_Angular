@@ -1,0 +1,21 @@
+<div class="layout-container">
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/logo1.png" alt="Logo" />
+    </div>
+    <ul>
+      <li><a routerLink="/employee-dashboard/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a routerLink="/employee-dashboard/employee-booking-list"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+      <li><a routerLink="/employee-dashboard/notifications"><i class="fas fa-bell"></i> Notification</a></li>
+      <li><a routerLink="/employee-dashboard/employee-profile"><i class="fas fa-user-circle"></i> Employee Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <app-dashboard-header></app-dashboard-header>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</div>

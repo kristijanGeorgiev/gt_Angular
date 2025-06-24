@@ -1,0 +1,26 @@
+<div class="card-container">
+  <div class="card-header">
+    <h3>Work Positions</h3>
+    <button class="add-btn" (click)="addWorkPosition()">Add</button>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th (click)="sortByID()">ID</th>
+        <th>Name</th>
+        <th class="actions-column">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let position of workpositions">
+        <td>{{ position.id }}</td>
+        <td>{{ position.name }}</td>
+        <td class="actions-column">
+          <button class="edit-btn" (click)="editWorkPosition(position.id)">Edit</button>
+          <button class="delete-btn" (click)="deleteWorkPosition(position)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

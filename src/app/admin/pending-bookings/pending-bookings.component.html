@@ -1,0 +1,36 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+      <h3 style="margin: 10; color: #2c2c2d;">Pending Bookings</h3>
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;">ID</th>
+        <th style="text-align: left; cursor: pointer;">BookingDate</th>
+        <th style="text-align: left; cursor: pointer;">ServiceDate</th>
+        <th style="text-align: left; cursor: pointer;">Service</th>
+        <th style="text-align: left; cursor: pointer;">Contact</th>
+        <th style="text-align: left; cursor: pointer; max-width: 200px;">Address</th>
+        <th style="text-align: left; cursor: pointer; max-width: 200px;">Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td style="text-align: left;">{{ booking.bookingID }}</td>
+        <td style="text-align: left;">{{ booking.bookingDate | date}}</td>
+        <td style="text-align: left;">{{ booking.serviceDate | date }}</td>
+        <td style="text-align: left;">{{ booking.serviceName }}</td>
+        <td style="text-align: left;">{{ booking.contactName }}</td>
+        <td style="text-align: left; max-width: 200px;">{{ booking.address }}</td>
+        <td style="text-align: left; max-width: 200px;">{{ booking.description }}</td>
+        <td>
+          <button 
+            (click)="viewBookingDetails(booking)" 
+            style="margin-right: 5px; background-color: rgb(97, 175, 254); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+           Approve
+          </button>
+          <button (click)="cancelBooking(booking)" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

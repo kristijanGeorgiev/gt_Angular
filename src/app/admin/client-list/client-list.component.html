@@ -1,0 +1,58 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <h3 style="margin: 0; color: #2c2c2d;">Clients</h3>
+    <div style="margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+  <input type="text" placeholder="Filter by Email" [(ngModel)]="emailFilter" style="padding: 5px; width: 200px;">
+  <input type="text" placeholder="Filter by First Name" [(ngModel)]="firstNameFilter" style="padding: 5px; width: 200px;">
+  <input type="text" placeholder="Filter by Last Name" [(ngModel)]="lastNameFilter" style="padding: 5px; width: 200px;">
+
+  <button (click)="applyFilters()" style="padding: 6px 12px; background-color: #1976d2; color: white; border: none; border-radius: 4px;">
+    Apply
+  </button>
+  <button (click)="clearFilters()" style="padding: 6px 12px; background-color: gray; color: white; border: none; border-radius: 4px;">
+    Clear
+  </button>
+</div>
+
+    <button 
+      (click)="addClient()" 
+      style="background-color: rgb(73, 204, 144); color: white; border: none; padding: 5px 15px; border-radius: 4px; font-weight: 500;">
+      Add
+    </button>
+  </div>
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByID()">UserID</th>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByEmail()">Email</th>
+        <th style="text-align: left;">FirstName</th>
+        <th style="text-align: left;">LastName</th>
+        <th style="text-align: left;">Address</th>
+        <th style="text-align: left;">PhoneNumber</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let client of filteredClients">
+        <td style="text-align: left;">{{ client.userId }}</td>
+        <td style="text-align: left;">{{ client.email }}</td>
+        <td style="text-align: left;">{{ client.firstName }}</td>
+        <td style="text-align: left;">{{ client.lastName }}</td>
+        <td style="text-align: left;">{{ client.address }}</td>
+        <td style="text-align: left;">{{ client.phoneNumber }}</td>
+        <td>
+          <button 
+            (click)="viewClientDetails(client)" 
+            style="margin-right: 5px; background-color: rgb(97, 175, 254); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+            View
+          </button>
+          <button 
+            (click)="editClient(client.userId)" 
+            style="background-color: rgb(252, 161, 48); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

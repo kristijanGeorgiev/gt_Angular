@@ -1,0 +1,47 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <h3 style="margin-bottom: 0.5rem; color: #2c2c2d;">Notes</h3>
+
+  <div class="filter-bar" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <label for="statusFilter">Filter by Status:</label>
+    <select id="statusFilter" [(ngModel)]="selectedStatus" (change)="filterByBookingStatus()" style="padding: 6px;">
+      <option value="">All</option>
+      <option value="Approved">Approved</option>
+      <option value="Completed">Completed</option>
+    </select>
+
+    <button (click)="clearFilter()" style="padding: 6px 12px; background-color: gray; color: white; border: none; border-radius: 4px;">
+      Clear
+    </button>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByBookingDate()">
+          <span *ngIf="sortDirection === 'asc'">&#9650;</span>
+          <span *ngIf="sortDirection === 'desc'">&#9660;</span>
+          Service Date
+        </th>
+        <th style="text-align: left;">Service</th>
+        <th style="text-align: left;">Status</th>
+        <th style="text-align: left;">Contact</th>
+        <th style="text-align: left;">Address</th>
+        <th style="text-align: left;">Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings; let i = index" [ngStyle]="{ 'background-color': i % 2 === 0 ? '#ffffff' : '#f9f9f9' }">
+        <td>{{ booking.bookingDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ booking.serviceName }}</td>
+        <td>{{ booking.bookingStatusName }}</td>
+        <td>{{ booking.contactName }}</td>
+        <td>{{ booking.address }}</td>
+        <td>{{ booking.description }}</td>
+        <td>
+          <button (click)="checknote(booking)" style="margin-right: 5px; background-color: orangered; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Note</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

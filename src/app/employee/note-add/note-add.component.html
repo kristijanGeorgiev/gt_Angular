@@ -1,0 +1,62 @@
+<div class="form-container">
+    <h2>Add New Note</h2>
+     <form class="note-form" #formRef="ngForm">
+    <div class="form-row">
+      <div class="form-group">
+           <label for="servicedate">ServiceDate:</label>
+           <p style="background-color: #fafafa;">{{servicedate}}</p>
+       </div>
+       <div class="form-group">
+        <label for="service">ServiceName:</label>
+        <p style="background-color: #fafafa;">{{serviceName}}</p>
+       </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <label for="clientaddress">Client Address:</label>
+        <p style="background-color: #fafafa;">{{clientAddress}}</p>
+      </div>
+      <div class="form-group">
+        <label for="clientname">Client Name:</label>
+        <p style="background-color: #fafafa;">{{clientName}}
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="checkin">Check In</label>
+        <input [(ngModel)]="newNote.checkIn" name="checkin" type="time" required #checkinRef="ngModel" />
+        <div *ngIf="checkinRef.invalid && checkinRef.touched" class="error-message" style="color: red;">
+          Check In is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="checkout">Check Out</label>
+        <input [(ngModel)]="newNote.checkOut" name="checkout" type="time" required #checkoutRef="ngModel" />
+        <div *ngIf="checkoutRef.invalid && checkoutRef.touched" class="error-message" style="color: red;">
+          Check Out is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="notetext">Note Text</label>
+        <input [(ngModel)]="newNote.noteText" name="notetext" type="text" required #notetextRef="ngModel" />
+        <div *ngIf="notetextRef.invalid && notetextRef.touched" class="error-message" style="color: red;">
+          Note Text is required.
+        </div>
+      </div>
+    </div>
+    <div class="form-row">
+      <div class="form-group">
+        <button type="button" (click)="back()">Back</button>
+    </div> 
+        <div class="form-group">
+      <button type="button" [disabled]="!formRef.form.valid" (click)="addNotes()">
+        Add
+      </button>
+        </div>
+    </div>
+  </form>
+</div>

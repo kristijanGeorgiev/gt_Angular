@@ -1,0 +1,27 @@
+<div *ngIf="service">
+    <h2>Edit Service</h2>
+    <form>
+        <label for="serviceId">ServiceID</label>
+        <input [(ngModel)]="service.serviceID" name="serviceID" type="number" />
+
+        <label for="name">Name</label>
+        <input [(ngModel)]="service.name" name="Name" />
+
+        <label for="description">Description</label>
+        <input [(ngModel)]="service.description" name="description"/>
+
+        <label for="price">Price</label>
+        <input [(ngModel)]="service.price" name="price" type="number"/>
+
+        <label for="isAvailable">isAvailable</label>
+        <input [(ngModel)]="service.isAvailable" name="isAvailable" />
+
+        <label for="image">Image</label>
+        <input [(ngModel)]="service.image" name="image" />
+
+        <label for="unitOfMeasure">unitOfMeasure</label>
+        <input [(ngModel)]="service.unitOfMeasure" name="unitOfMeasure" />
+
+        <button style="background-color: rgb(23, 124, 218); color: white;" (click)="saveChanges()">Save Changes</button>
+    </form>
+</div>

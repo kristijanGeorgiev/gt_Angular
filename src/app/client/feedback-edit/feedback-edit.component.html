@@ -1,0 +1,30 @@
+<div class="feedback-container">
+  <h2>Edit Feedback</h2>
+
+  <form (ngSubmit)="updateFeedback()">
+    <label for="rating">Rating (1 to 5):</label>
+    <input
+      type="number"
+      id="rating"
+      name="rating"
+      [(ngModel)]="feedback.rating"
+      min="1"
+      max="5"
+      required
+    />
+
+    <label for="comment">Comment:</label>
+    <textarea
+      id="comment"
+      name="comment"
+      [(ngModel)]="feedback.comment"
+      rows="4"
+      required
+    ></textarea>
+
+    <div class="buttons">
+      <button type="submit">Update</button>
+      <button type="button" (click)="cancel()">Cancel</button>
+    </div>
+  </form>
+</div>

@@ -1,0 +1,89 @@
+<div style="background-color: white; padding: 20px; margin-left: 80px; margin-right: 80px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <div id="pdfTable" class="p-3">
+  <div class="title-boxes">
+    <div class="title-box">
+      <img src="assets/logo.jpg" class="img-fluid" alt="Company Logo" style="max-height: 80px;" />
+    </div>
+    <div class="title-box">
+      {{ companyInfo?.companyName }}, 
+      {{ companyInfo?.companyAddress }}
+      {{ companyInfo?.bank }}
+      {{ companyInfo?.bankAccount }}
+      Tax Number: {{ companyInfo?.taxNumber }}
+      PhoneNumber: {{ companyInfo?.phoneNumber }}
+    </div>
+  </div>
+
+  <div class="invoice">
+    <div class="invoice-box">
+      <h3>Bill To:</h3>
+      <p>{{ invoice?.contactName }}</p>
+      <p>{{ invoice?.address }}</p>
+    </div>
+
+    <div class="invoice-box">
+      <h3>Invoice Details:</h3>
+      <p><strong>Invoice No:</strong> {{ invoice?.invoiceID }}</p>
+      <p><strong>Issue Date:</strong> {{ invoice?.issuedDate | date }}</p>
+      <p><strong>Due Date:</strong> {{ invoice?.dueDate | date }}</p>
+    </div>
+  </div>
+    <div *ngIf="invoice">
+  <div style="background-color:#e7e7e7;" class="details">
+
+    <div class="detail-box-id">#</div>
+    <div class="detail-box-desc">Description</div>
+    <div class="detail-box-qu">Quantity</div>
+    <div class="detail-box-am">Amount</div>
+    <div class="detail-box-tax">Tax %</div>
+    <div class="detail-box-total">Total</div>
+  </div>
+  <div class="details">
+    <div class="detail-box-id">1</div>
+    <div class="detail-box-desc">{{ invoice.serviceName }}</div>
+    <div class="detail-box-qu">{{ invoice.quantity }}</div>
+    <div class="detail-box-am">{{ invoice.amount | currency }}</div>
+    <div class="detail-box-tax">{{ invoice.tax }}%</div>
+    <div class="detail-box-total">
+       {{ invoice.quantity * invoice.amount | currency }}
+    </div>
+  </div>
+  <hr>
+
+    <div class="details">
+        <div class="detail-box-id"></div>
+        <div class="detail-box-desc"></div>
+        <div class="detail-box-qu"></div>
+        <div class="detail-box-am"></div>
+        <div class="detail-box-tax">SubTotal:</div>
+        <div class="detail-box-total">
+            {{ invoice.quantity * invoice.amount | currency }}
+        </div>
+    </div>
+ <div class="details">
+        <div class="detail-box-id"></div>
+        <div class="detail-box-desc"></div>
+        <div class="detail-box-qu"></div>
+        <div class="detail-box-am"></div>
+        <div class="detail-box-tax">Tax:</div>
+        <div class="detail-box-total">
+            {{invoice.quantity * invoice.amount * (invoice.tax || 0) / 100 | currency }}
+        </div>
+</div>
+ <div class="details">
+        <div class="detail-box-id"></div>
+        <div class="detail-box-desc"></div>
+        <div class="detail-box-qu"></div>
+        <div class="detail-box-am"></div>
+        <div class="detail-box-tax">Grand Total:</div>
+        <div class="detail-box-total">
+            {{ invoice.quantity * invoice.amount * (1 + (invoice.tax || 0) / 100) | currency }}
+        </div>
+</div>
+</div>
+</div>
+    <div class="form-actions">
+      <button type="button" class="back-button" (click)="back()">Back</button>
+      <button type="button" class="btn btn-secondary ml-2" (click)="exportToPDF()">Export</button>
+    </div>
+</div>

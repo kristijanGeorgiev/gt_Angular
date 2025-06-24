@@ -1,0 +1,75 @@
+<div *ngIf="booking" class="booking-container" style="max-width: 700px; margin: auto; background-color: white; padding: 30px; border: 1px solid #ccc; font-family: Arial, sans-serif;">
+
+  <div *ngIf="selectedService" style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 10px;">
+    <img *ngIf="selectedService.image"
+         [src]="'https://localhost:7025/images/services/' + selectedService.image"
+         alt="Service Image"
+         style="width: 200px; height: auto; border-radius: 8px;" />
+    
+    <div style="flex: 1;">
+        <h2 style="margin-top: 0; margin-bottom: 0; text-align: left;">{{ selectedService.name }}</h2>
+        <p>{{ selectedService.description }}</p>
+        <p style="text-align: left;">Price: {{ selectedService.price }}  {{selectedService.unitOfMeasure}}</p>
+      </div>
+  </div>
+
+  <h2 style="text-align: center;">Edit Booking</h2>
+
+  <form (submit)="saveChanges()" #form="ngForm">
+
+    <div style="display: flex; gap: 10px;">
+      <div style="flex: 1;">
+        <label for="bookingDate">Booking Date:</label>
+        <input id="bookingDate" type="date" [(ngModel)]="booking.bookingDate" name="bookingDate" required />
+      </div>
+      <div style="flex: 1;">
+        <label for="serviceDate">Service Date:</label>
+        <input id="serviceDate" type="date" [(ngModel)]="booking.serviceDate" name="serviceDate" required />
+      </div>
+      <div style="flex: 1;">
+  <label for="paymentMethod">Payment Method:</label>
+  <select id="paymentMethod" [(ngModel)]="booking.paymentMethod" name="paymentMethod" required
+          style="width: 100%; padding: 5px; height: 43px; border: 1px solid #ccc; border-radius: 4px;">
+    <option value="" disabled>Select payment method</option>
+    <option value="Cash">Cash</option>
+    <option value="Invoice">Invoice</option>
+    <option value="Credit Card">Credit Card</option>
+  </select>
+</div>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+      <div style="flex: 1;">
+        <label for="contactName">Contact Name:</label>
+        <input id="contactName" [(ngModel)]="booking.contactName" name="contactName" required />
+      </div>
+      <div style="flex: 1;">
+        <label for="address">Address:</label>
+        <input id="address" [(ngModel)]="booking.address" name="address" required />
+      </div>
+    </div>
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+      <div style="flex: 1;">
+        <label for="status">Status:</label>
+        <input id="status" [(ngModel)]="booking.bookingStatusName" name="status" required />
+      </div>
+      <div style="flex: 1;">
+        <label for="service">Service:</label>
+        <input id="service" [(ngModel)]="booking.serviceName" name="service" required />
+      </div>
+    </div>
+    <div style="margin-top: 10px;">
+      <label for="description">Description:</label>
+      <textarea id="description" [(ngModel)]="booking.description" name="description" rows="3" style="width: 100%;"></textarea>
+    </div>
+
+    <div style="display: flex; gap: 10px; margin-top: 10px;">
+      <button type="submit" style="background-color: rgb(23, 124, 218); color: white; padding: 10px 20px; border: none; border-radius: 4px;">
+        Back
+      </button>
+      <button type="submit" style="background-color: rgb(23, 124, 218); color: white; padding: 10px 20px; border: none; border-radius: 4px;">
+        Save Changes
+      </button>
+    </div>
+  </form>
+</div>

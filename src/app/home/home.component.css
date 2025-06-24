@@ -1,0 +1,99 @@
+html, body {
+    font-family: Helvetica, Arial, sans-serif;
+    height: 100%;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .main-content {
+    flex: 1;
+  }
+  .background {
+    background-image: url('/assets/banner.jpg');
+    background-color: white;
+    background-size: cover;
+    background-position: center;
+    min-height: 120vh;
+    padding: 0px;
+    color: rgb(0, 0, 0);
+  }
+  .header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    font-size: small;
+  }
+  
+  .header .logo {
+    height: 40px;
+  }
+  
+  .header .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(84, 83, 83);
+    margin-left: 20px;
+  }
+  
+  .header .auth-links a {
+    margin-left: 15px;
+    color: #1a1818;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .header .auth-links a:hover {
+    text-decoration: underline;
+  }
+  .services {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+    gap: 30px;
+    margin-top: 150px;
+    text-align: center;
+  }
+  
+  .service-icon {
+    width: 100px;
+    height: 100px;
+    object-fit: contain;
+    background-color: rgba(255, 255, 255, 0.7);
+    transition: transform 0.3s;
+  }
+  
+  .service-icon:hover {
+    transform: scale(1.1);
+  }
+  .footer {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: #221f1f;
+    font-weight: bold;
+    padding: 10px 10px;
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    font-size: small;
+  }
+  
+  .footer .logo {
+    height: 50px;
+  }
+  .footer-info {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 2rem;
+  flex-wrap: wrap;
+}
+
+.footer-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.75rem;
+  max-width: 250px;
+}
+  

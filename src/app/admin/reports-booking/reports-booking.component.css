@@ -1,0 +1,14 @@
+.report-container {
+  padding: 20px;
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 0 8px rgba(0,0,0,0.1);
+  margin: 20px auto;
+  max-width: 800px;
+}
+
+.report-container h3 {
+  margin-bottom: 20px;
+  color: #2c3e50;
+  text-align: center;
+}

@@ -1,0 +1,84 @@
+.card-container {
+  background-color: #fff;
+  padding: 20px 24px;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.header h3 {
+  margin: 0;
+  color: #2c3e50;
+}
+
+.filter-group {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.form-control {
+  padding: 8px;
+  font-size: 14px;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+}
+
+.btn {
+  padding: 8px 14px;
+  font-size: 14px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  white-space: nowrap;
+}
+
+.btn.primary {
+  background-color: #1976d2;
+  color: white;
+}
+
+.btn.secondary {
+  background-color: gray;
+  color: white;
+}
+
+.btn.info {
+  background-color: #61affe;
+  color: white;
+}
+
+.btn:hover {
+  opacity: 0.9;
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+  background-color: white;
+}
+
+thead tr {
+  background-color: #666666;
+  color: white;
+}
+
+th, td {
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  font-size: 14px;
+  text-align: left;
+}
+
+tbody tr:nth-child(even) {
+  background-color: #f9f9f9;
+}

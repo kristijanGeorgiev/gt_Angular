@@ -1,0 +1,42 @@
+<div class="feedback-form-container">
+  <h2>Add Feedback</h2>
+
+  <form (ngSubmit)="submitFeedback()" #form="ngForm">
+
+    <div class="form-group">
+      <label for="rating">Rating (1-5):</label>
+      <select id="rating"
+              [(ngModel)]="newFeedback.rating"
+              name="rating"
+              required
+              #rating="ngModel">
+        <option value="" disabled selected>Select rating</option>
+        <option *ngFor="let r of [1, 2, 3, 4, 5]" [value]="r">{{ r }}</option>
+      </select>
+      <div *ngIf="rating.invalid && rating.touched" style="color: red; font-size: 12px;">
+        Rating is required
+      </div>
+    </div>
+
+    <div class="form-group">
+      <label for="comment">Comment:</label>
+      <textarea id="comment"
+                [(ngModel)]="newFeedback.comment"
+                name="comment"
+                rows="4"
+                placeholder="Write your feedback..."
+                required
+                #comment="ngModel">
+      </textarea>
+      <div *ngIf="comment.invalid && comment.touched" style="color: red; font-size: 12px;">
+        Comment is required
+      </div>
+    </div>
+
+    <div class="button-group">
+      <button type="submit" class="submit-btn" [disabled]="form.invalid">Submit</button>
+      <button type="button" class="cancel-btn" (click)="cancel()">Cancel</button>
+    </div>
+
+  </form>
+</div>

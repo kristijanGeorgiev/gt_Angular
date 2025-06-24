@@ -1,0 +1,17 @@
+<div style="background-color: white; margin-left: 40px; max-width: 700px; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+    <button type="button" class="btn btn-secondary ml-2" (click)="exportToPDF()">Export</button>
+     <button style="background-color: blue; color: white;" (click)="back()">Back</button>
+     
+    <div id="pdfTable" class="p-3">
+  <a routerLink="/admin-dashboard/reports-revenue" class="chart-box clickable" style="text-decoration: none; color: inherit;">
+  <h4>Monthly Booking Trends</h4>
+  <canvas baseChart
+    [data]="{
+      labels: monthlyBookingLabels,
+      datasets: [{ data: monthlyBookingData, backgroundColor: ['#b8f7da', '#fad9af', '#f9c2c2', '#aed6ff', '#fddffd', '#cbf9e4'] }]
+    }"
+    [type]="'bar'">
+  </canvas>
+</a>
+</div>
+</div>

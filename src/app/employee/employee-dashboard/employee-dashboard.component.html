@@ -1,0 +1,58 @@
+<div *ngIf="statistic" class="dashboard-container">
+
+  <div class="stat-boxes">
+
+  <div class="stat-box stat-completed" style="display: flex; align-items: center; padding: 10px;">
+  
+  <div style="flex: 0 0 60px; margin-right: 15px;">
+    <img src="assets/completed jobs.png" alt="Completed Jobs" style="width: 60px; height: 60px; object-fit: contain;" />
+  </div>
+  
+
+  <div style="flex: 1;">
+    <h3 style="margin: 0 0 8px;">Completed Jobs</h3>
+    <p style="margin: 0;">
+      <strong>Month:</strong> {{ statistic.completedJobsThisMonth }}  
+      <strong>Year:</strong> {{ statistic.completedJobsThisYear }}
+    </p>
+  </div>
+
+</div>
+
+
+  <div class="stat-box stat-hours" style="display: flex; align-items: center; padding: 10px;">
+  
+  <div style="flex: 0 0 60px; margin-right: 15px;">
+    <img src="assets/working hours.png" alt="Working Hours" style="width: 60px; height: 60px; object-fit: contain;" />
+  </div>
+  
+
+  <div style="flex: 1;">
+    <h3 style="margin: 0 0 8px;">Working Hours</h3>
+    <p style="margin: 0;">
+      <strong>Month:</strong> {{ statistic.workingHoursThisMonth }}  
+      <strong>Year:</strong> {{ statistic.workingHoursThisYear }}
+    </p>
+  </div>
+
+</div>
+
+  <div class="stat-box stat-rating" style="display: flex; align-items: center; padding: 10px;">
+  
+  <div style="flex: 0 0 60px; margin-right: 15px;">
+    <img src="assets/average rating.png" alt="Average Rating" style="width: 60px; height: 60px; object-fit: contain;" />
+  </div>
+  
+
+  <div style="flex: 1;">
+    <h3 style="margin: 0 0 8px;">Average Rating</h3>
+    <p style="margin: 0;"> 
+      {{ statistic.averageRatingThisYear }}
+    </p>
+  </div>
+
+</div>
+
+</div>
+    <app-employee-assigned-booking></app-employee-assigned-booking>
+</div>

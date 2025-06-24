@@ -1,0 +1,23 @@
+<div class="layout-container">
+  <nav class="sidebar">
+    <div class="sidebar-logo">
+      <img src="assets/logo1.png" alt="Logo" />
+    </div>
+    <ul>
+      <li><a routerLink="/client-dashboard/dashboard"><i class="fas fa-home"></i> Dashboard</a></li>
+      <li><a routerLink="/client-dashboard/booking-feedback"><i class="fas fa-comment-dots"></i> Feedback</a></li>
+      <li><a routerLink="/client-dashboard/bookings"><i class="fas fa-calendar-check"></i> Bookings</a></li>
+      <li><a routerLink="/client-dashboard/booking-invoice"><i class="fas fa-file-invoice-dollar"></i> Invoice</a></li>
+      <li><a routerLink="/client-dashboard/notifications"><i class="fas fa-bell"></i> Notification</a></li>
+      <li><a routerLink="/client-dashboard/client-profile"><i class="fas fa-user-circle"></i> Client Profile</a></li>
+    </ul>
+  </nav>
+
+  <div class="main-content">
+    <app-dashboard-header></app-dashboard-header>
+    <main class="content">
+      <router-outlet></router-outlet>
+    </main>
+    <app-footer></app-footer>
+  </div>
+</div>

@@ -1,0 +1,31 @@
+.header {
+    display: flex;
+    justify-content: space-between;
+    font-family: 'Poppins', sans-serif;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.7);
+    padding: 10px;
+    font-size: small;
+  }
+  
+  .header .logo {
+    height: 40px;
+  }
+  
+  .header .title {
+    font-size: 18px;
+    font-weight: bold;
+    color: rgb(84, 83, 83);
+    margin-left: 20px;
+  }
+  
+  .header .auth-links a {
+    margin-left: 15px;
+    color: #1a1818;
+    text-decoration: none;
+    font-weight: bold;
+  }
+  
+  .header .auth-links a:hover {
+    text-decoration: underline;
+  }

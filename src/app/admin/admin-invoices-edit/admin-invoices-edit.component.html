@@ -1,0 +1,72 @@
+<div *ngIf="invoice" class="form-container">
+    <div class="form-row">
+    <div class="form-group">
+          <h3>Edit Invoice</h3>
+    </div>
+    <div class="form-group">
+          <h3>Invoice No: {{invoice.invoiceID}}</h3>
+    </div>
+    </div>    
+  <div class="form-row">
+    <div class="form-group">
+      <label>Client</label>
+      <p style="background-color:rgb(222, 223, 239);">{{invoice.contactName}}</p>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <p style="background-color:rgb(222, 223, 239);">{{invoice.address}}</p>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+         <label>Description</label>
+         <p style="background-color:rgb(222, 223, 239);">{{invoice.serviceName}}</p>
+    </div>
+  </div>
+
+  <form class="invoice-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="issueddate">Issued Date</label>
+        <input [(ngModel)]="invoice.issuedDate" name="issueddate" type="date" />
+      </div>
+        <div class="form-group">
+        <label for="duedate">Due Date</label>
+        <input [(ngModel)]="invoice.dueDate" name="duedate" type="date" />
+      </div>
+      <div class="form-group">
+        <label>Is Paid:</label>
+        <select [(ngModel)]="invoice.isPaid" name="isPaid">
+          <option [ngValue]="true">Paid</option>
+          <option [ngValue]="false">Not Paid</option>
+        </select>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+         <label for="quantity">Quantity</label>
+         <input [(ngModel)]="invoice.quantity" name="quantity"/>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input [(ngModel)]="invoice.amount" name="amount" type="number" />
+      </div>
+      <div class="form-group">
+        <label for="tax">Tax</label>
+        <input [(ngModel)]="invoice.tax" name="tax" type="number" />
+      </div>
+      <div class="form-group">
+        <label for="subtotal">Total</label>
+        <p style="background-color:rgb(222, 223, 239);">{{invoice.amount * invoice.quantity + invoice.amount * invoice.quantity * invoice.tax / 100}}</p>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" class="back-button" (click)="back()">Back</button>
+      <button type="button" class="save-button" (click)="saveChanges()">Save</button>
+    </div>
+    
+  </form>
+</div>

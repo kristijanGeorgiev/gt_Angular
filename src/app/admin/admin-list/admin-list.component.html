@@ -1,0 +1,48 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px;">
+    <h3 style="margin: 0; color: #2c2c2d; text-align: left;">Administrators</h3>
+    <button 
+      (click)="addAdmin()" 
+      style="background-color: rgb(73, 204, 144); color: white; border: none; padding: 5px 15px; border-radius: 4px; font-weight: 500;">
+      Add
+    </button>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByID()">UserID</th>
+        <th style="text-align: left;">UserName</th>
+        <th style="text-align: left;">Email</th>
+        <th style="text-align: left;">FirstName</th>
+        <th style="text-align: left;">LastName</th>
+        <th style="text-align: left;">Address</th>
+        <th style="text-align: left;">PhoneNumber</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let admin of admins">
+        <td style="text-align: left;">{{ admin.userId }}</td>
+        <td style="text-align: left;">{{ admin.username }}</td>
+        <td style="text-align: left;">{{ admin.email }}</td>
+        <td style="text-align: left;">{{ admin.firstName }}</td>
+        <td style="text-align: left;">{{ admin.lastName }}</td>
+        <td style="text-align: left;">{{ admin.address }}</td>
+        <td style="text-align: left;">{{ admin.phoneNumber }}</td>
+        <td>
+          <button 
+            (click)="viewAdminDetails(admin)" 
+            style="margin-right: 5px; background-color: rgb(97, 175, 254); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+            View
+          </button>
+          <button 
+            (click)="editAdmin(admin.userId)" 
+            style="background-color: rgb(252, 161, 48); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+            Edit
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

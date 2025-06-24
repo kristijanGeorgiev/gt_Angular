@@ -1,0 +1,35 @@
+<div class="notification-container">
+  <h2 class="form-title" style="text-align: left;">User Notifications</h2>
+
+  <div class="filter-bar">
+    <label for="fromDate">From:</label>
+    <input type="date" [(ngModel)]="fromDate" id="fromDate" />
+
+    <label for="toDate">To:</label>
+    <input type="date" [(ngModel)]="toDate" id="toDate" />
+
+    <button (click)="applyDateFilter()">Apply</button>
+    <button (click)="clearFilter()">Clear</button>
+  </div>
+
+  <div *ngIf="error" class="error">{{ error }}</div>
+
+  <div *ngIf="notifications.length === 0 && !error" class="no-data">
+    No notifications found.
+  </div>
+
+  <table class="notification-table" *ngIf="notifications.length > 0">
+    <thead style="border: 1px;">
+      <tr>
+        <th style="text-align: left;">Message</th>
+        <th style="text-align: left;">Date</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let n of notifications">
+        <td>{{ n.message }}</td>
+        <td>{{ n.createdAt | date: 'shortDate' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

@@ -1,0 +1,65 @@
+<div *ngIf="statistics" class="dashboard-container">
+<h3>Report Dashboard</h3>
+<div class="dashboard-boxes-row">
+  <a routerLink="/admin-dashboard/reports-employee" style="text-decoration: none;">
+  <div class="dashboard-box client-box" style="cursor: pointer;">
+    <h4><i class="fas fa-users"></i> Employees: {{ statistics.totalClients }}</h4>
+  </div>
+</a>
+    <a routerLink="/admin-dashboard/reports-invoice" style="text-decoration: none;">
+  <div class="dashboard-box client-box" style="cursor: pointer;">
+    <h4><i class="fas fa-users"></i> Pending Invoices: {{ statistics.pendingInvoices }}</h4>
+  </div>
+</a>
+<a routerLink="/admin-dashboard/reports-allinvoices" style="text-decoration: none;">
+  <div class="dashboard-box client-box" style="cursor: pointer;">
+    <h4><i class="fas fa-users"></i> Invoices</h4>
+  </div>
+</a>
+<a routerLink="/admin-dashboard/reports-clientinvoices" style="text-decoration: none;">
+  <div class="dashboard-box client-box" style="cursor: pointer;">
+    <h4><i class="fas fa-users"></i> Invoices By Client</h4>
+  </div>
+</a>
+</div>
+
+
+  <div class="dashboard-boxes">
+  
+<a routerLink="/admin-dashboard/reports-bst" class="chart-box clickable" style="text-decoration: none; color: inherit;">
+  <h4>Bookings by Service Type</h4>
+  <canvas baseChart
+    [data]="{
+      labels: bookingsByServiceLabels,
+      datasets: [{ data: bookingsByServiceData, backgroundColor: ['#b8f7da', '#fad9af', '#f9c2c2', '#aed6ff', '#fddffd', '#cbf9e4'] }]
+    }"
+    [type]="'bar'">
+  </canvas>
+</a>
+
+
+      <a routerLink="/admin-dashboard/reports-booking" class="chart-box clickable" style="text-decoration: none; color: inherit;">
+  <h4>Monthly Booking Trends</h4>
+  <canvas baseChart
+    [data]="{
+      labels: monthlyBookingLabels,
+      datasets: [{ data: monthlyBookingData, backgroundColor: ['#b8f7da', '#fad9af', '#f9c2c2', '#aed6ff', '#fddffd', '#cbf9e4'] }]
+    }"
+    [type]="'bar'">
+  </canvas>
+</a>
+
+        <a routerLink="/admin-dashboard/reports-revenue" class="chart-box clickable" style="text-decoration: none; color: inherit;">
+  <h4>Revenue By Month</h4>
+  <canvas baseChart
+    [data]="{
+      labels: revenueLabels,
+      datasets: [{ data: revenueData, backgroundColor: ['#b8f7da', '#fad9af', '#f9c2c2', '#aed6ff', '#fddffd', '#cbf9e4'] }]
+    }"
+    [type]="'bar'">
+  </canvas>
+</a>
+
+    </div>
+
+  </div>

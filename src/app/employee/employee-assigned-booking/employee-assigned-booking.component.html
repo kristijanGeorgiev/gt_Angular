@@ -1,0 +1,33 @@
+<div class="booking-container">
+  <h3 class="form-title">Assigned Bookings</h3>
+
+  <table class="booking-table">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByServiceDate()">
+          <span *ngIf="sortDirection === 'asc'">&#9650;</span>
+          <span *ngIf="sortDirection === 'desc'">&#9660;</span>
+          Date
+        </th>
+        <th style="text-align: left;">Service</th>
+        <th style="text-align: left;">Contact</th>
+        <th style="text-align: left;">Address</th>
+        <th style="text-align: left;">Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings; let i = index" [ngStyle]="{ 'background-color': i % 2 === 0 ? '#ffffff' : '#f9f9f9' }">
+        <td>{{ booking.serviceDate | date: 'dd-MM-yyyy' }}</td>
+        <td>{{ booking.serviceName }}</td>
+        <td>{{ booking.contactName }}</td>
+        <td>{{ booking.address }}</td>
+        <td>{{ booking.description }}</td>
+        <td>
+          <button (click)="checknote(booking)" style="margin-right: 5px; background-color: #fca130; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Note</button>
+          <button (click)="completeBooking(booking)" style="margin-right: 5px; background-color: #49cc90; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Completed</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

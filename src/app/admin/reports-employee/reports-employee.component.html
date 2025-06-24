@@ -1,0 +1,25 @@
+<div style="background-color: white; padding: 20px; border-radius: 8px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+    <button type="button" class="btn btn-secondary ml-2" (click)="exportToPDF()">Export</button>
+     <button style="background-color: blue; color: white;" (click)="back()">Back</button>
+    <div id="pdfTable" class="p-3">
+  <h3 style="margin-bottom: 15px; color: #2c3e50;">Employee Workload & Hours Worked</h3>
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left;">Employee ID</th>
+        <th style="text-align: left;">Employee Name</th>
+        <th style="text-align: left;">Total Jobs Assigned</th>
+        <th style="text-align: left;">Total Hours Worked</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let report of combinedReport">
+        <td style="padding: 8px;">{{ report.employeeId }}</td>
+        <td style="padding: 8px;">{{ report.employeeName }}</td>
+        <td style="padding: 8px;">{{ report.totalJobsAssigned }}</td>
+        <td style="padding: 8px;">{{ report.totalHoursWorked | number:'1.1-1' }}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

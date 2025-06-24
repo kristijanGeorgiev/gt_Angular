@@ -1,0 +1,54 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <h2 style="margin-bottom: 0.5rem; color: #2c2c2d;">Bookings</h2>
+
+  <div class="date-filter-bar" style="display: flex; align-items: center; gap: 1rem; margin-bottom: 1rem;">
+    <label for="fromDate">From:</label>
+    <input type="date" [(ngModel)]="fromDate" id="fromDate" name="fromDate" />
+
+    <label for="toDate">To:</label>
+    <input type="date" [(ngModel)]="toDate" id="toDate" name="toDate" />
+
+    <button (click)="applyDateFilter()" style="padding: 6px 12px; background-color: #3f51b5; color: white; border: none; border-radius: 4px;">
+      Apply
+    </button>
+    <button (click)="clearFilter()" style="padding: 6px 12px; background-color: gray; color: white; border: none; border-radius: 4px;">
+      Clear
+    </button>
+  </div>
+
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;" (click)="sortByBookingDate()">
+          <span *ngIf="sortDirection === 'asc'">&#9650;</span>
+          <span *ngIf="sortDirection === 'desc'">&#9660;</span>
+          Booking
+        </th>
+        <th style="text-align: left;">Service</th>
+        <th style="text-align: left;">Status</th>
+        <th style="text-align: left;">Date</th>
+        <th style="text-align: left;">Contact</th>
+        <th style="text-align: left; max-width: 200px;">Address</th>
+        <th style="text-align: left;">Description</th>
+        <th style="text-align: left;">Payment</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings; let i = index" [ngStyle]="{ 'background-color': i % 2 === 0 ? '#ffffff' : '#f9f9f9' }">
+        <td style="text-align: left;">{{ booking.bookingDate | date: 'dd-MM-yyyy' }}</td>
+        <td style="text-align: left;">{{ booking.serviceName }}</td>
+        <td style="text-align: left;">{{ booking.bookingStatusName }}</td>
+        <td style="text-align: left;">{{ booking.serviceDate | date: 'dd-MM-yyyy' }}</td>
+        <td style="text-align: left;">{{ booking.contactName }}</td>
+        <td style="text-align: left; max-width: 200px;">{{ booking.address }}</td>
+        <td style="text-align: left;">{{ booking.description }}</td>
+        <td style="text-align: left;">{{ booking.paymentMethod }}</td>
+        <td>
+          <button (click)="editBooking(booking.bookingID, booking.bookingStatusId)" style="margin-right: 5px; background-color: orangered; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Edit</button>
+          <button (click)="cancelBooking(booking)" style="background-color: red; color: white; border: none; padding: 5px 10px; border-radius: 4px;">Cancel</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

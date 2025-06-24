@@ -1,0 +1,48 @@
+<div class="card-container">
+  <div class="header">
+    <h3>Feedbacks</h3>
+    <div class="filter-group">
+      <select [(ngModel)]="serviceIdFilter" class="form-control">
+        <option value="">All Services</option>
+        <option *ngFor="let service of services" [value]="service.serviceID">
+          {{ service.name }}
+        </option>
+      </select>
+
+      <input type="date" [(ngModel)]="fromDateFilter" class="form-control" placeholder="From Date" />
+      <input type="date" [(ngModel)]="toDateFilter" class="form-control" placeholder="To Date" />
+
+      <button (click)="applyFilters()" class="btn primary">Apply</button>
+      <button (click)="clearFilters()" class="btn secondary">Clear</button>
+    </div>
+  </div>
+
+  <table>
+    <thead>
+      <tr>
+        <th (click)="sortByID()">ID</th>
+        <th>Service</th>
+        <th>Service Date</th>
+        <th>Contact Name</th>
+        <th style="max-width: 300px;">Address</th>
+        <th style="max-width: 300px;">Comment</th>
+        <th>Rate</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let feedback of feedbacks">
+        <td>{{ feedback.bookingID }}</td>
+        <td>{{ feedback.serviceName }}</td>
+        <td>{{ feedback.serviceDate | date }}</td>
+        <td>{{ feedback.contactName }}</td>
+        <td style="max-width: 300px;">{{ feedback.address }}</td>
+        <td style="max-width: 300px;">{{ feedback.comment }}</td>
+        <td>{{ feedback.rating}}</td>
+        <td>
+          <button class="btn info" (click)="viewFeedbackDetails(feedback)">View</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

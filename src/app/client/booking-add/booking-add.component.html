@@ -1,0 +1,71 @@
+<div class="booking-container" style="display: flex; justify-content: center;">
+  <div style="width: 100%; max-width: 800px;">
+    <div *ngIf="selectedService" style="display: flex; align-items: flex-start; gap: 20px; margin-bottom: 20px;">
+      <img *ngIf="selectedService?.image" 
+           [src]="'https://localhost:7025/images/services/' + selectedService.image" 
+           alt="Service Image"
+           style="width: 200px; height: 120px; border-radius: 8px; object-fit: cover;" />
+      
+      <div style="flex: 1;">
+        <h2 style="margin-top: 0; margin-bottom: 0; text-align: left;">{{ selectedService.name }}</h2>
+        <p>{{ selectedService.description }}</p>
+        <p style="text-align: left;">Price: {{ selectedService.price }}  {{selectedService.unitOfMeasure}}</p>
+      </div>
+    </div>
+
+    <hr />
+    <h3 style="text-align: center;">Book Your Service</h3>
+    
+    <form (ngSubmit)="addBooking()" #form="ngForm" style="display: flex; flex-direction: column; gap: 12px;">
+
+  <div style="display: flex; gap: 20px;">
+    <div style="flex: 1;">
+      <label for="bookingDate">Booking Date:</label>
+      <input id="bookingDate" [(ngModel)]="newBooking.bookingDate" name="bookingDate" type="date" required #bookingDate="ngModel" />
+      <div *ngIf="bookingDate.invalid && bookingDate.touched" style="color: red; font-size: 12px;">Booking Date is required</div>
+    </div>
+
+    <div style="flex: 1;">
+      <label for="serviceDate">Service Date:</label>
+      <input id="serviceDate" [(ngModel)]="newBooking.serviceDate" name="serviceDate" type="date" required #serviceDate="ngModel" />
+      <div *ngIf="serviceDate.invalid && serviceDate.touched" style="color: red; font-size: 12px;">Service Date is required</div>
+    </div>
+
+    <div style="flex: 1;">
+      <label for="paymentMethod">Payment Method:</label>
+      <select id="paymentMethod" [(ngModel)]="newBooking.paymentMethod" name="paymentMethod" required #paymentMethod="ngModel">
+        <option value="" disabled>Select method</option>
+        <option value="Cash">Cash</option>
+        <option value="Bank Transfer">Bank Transfer</option>
+        <option value="Credit Card">Credit Card</option>
+      </select>
+      <div *ngIf="paymentMethod.invalid && paymentMethod.touched" style="color: red; font-size: 12px;">Payment Method is required</div>
+    </div>
+  </div>
+
+  <div style="display: flex; gap: 20px;">
+    <div style="flex: 1;">
+      <label for="contactName">Contact Name:</label>
+      <input id="contactName" [(ngModel)]="newBooking.contactName" name="contactName" required #contactName="ngModel" />
+      <div *ngIf="contactName.invalid && contactName.touched" style="color: red; font-size: 12px;">Contact Name is required</div>
+    </div>
+
+    <div style="flex: 1;">
+      <label for="address">Address:</label>
+      <input id="address" [(ngModel)]="newBooking.address" name="address" required #address="ngModel" />
+      <div *ngIf="address.invalid && address.touched" style="color: red; font-size: 12px;">Address is required</div>
+    </div>
+  </div>
+
+  <label for="description">Description:</label>
+  <textarea id="description" [(ngModel)]="newBooking.description" name="description" rows="3" required style="width: 100%;" #description="ngModel"></textarea>
+  <div *ngIf="description.invalid && description.touched" style="color: red; font-size: 12px;">Description is required</div>
+
+  <div style="margin-top: 10px;">
+    <button type="submit" [disabled]="form.invalid">Save Booking</button>
+    <button type="button" class="back-button" (click)="goToBookingList()">Back</button>
+  </div>
+</form>
+
+  </div>
+</div>

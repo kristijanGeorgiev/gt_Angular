@@ -1,0 +1,68 @@
+<div *ngIf="invoice" class="form-container">
+  <h3>Create Invoice</h3>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Client</label>
+      <p style="background-color:rgb(222, 223, 239);">{{clientName}}</p>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <p style="background-color:rgb(222, 223, 239);">{{clientAddress}}</p>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <p style="background-color:rgb(222, 223, 239);">{{clientPhoneNumber}}</p>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+         <label>Service</label>
+         <p style="background-color:rgb(222, 223, 239);">{{serviceName}}</p>
+    </div>
+    <div class="form-group">
+         <label>Description</label>
+         <p style="background-color:rgb(222, 223, 239);">{{description}}</p>
+    </div>
+  </div>
+
+  <form class="invoice-form">
+    <div class="form-row">
+      <div class="form-group">
+        <label for="issueddate">Issued Date</label>
+        <input [(ngModel)]="invoice.issuedDate" name="issueddate" type="date" />
+      </div>
+        <div class="form-group">
+        <label for="duedate">Due Date</label>
+        <input [(ngModel)]="invoice.dueDate" name="duedate" type="date" />
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+         <label for="quantity">Quantity</label>
+         <input [(ngModel)]="invoice.quantity" name="quantity"/>
+      </div>
+      <div class="form-group">
+        <label for="amount">Amount</label>
+        <input [(ngModel)]="invoice.amount" name="amount" type="number" />
+      </div>
+      <div class="form-group">
+        <label for="tax">Tax</label>
+        <input [(ngModel)]="invoice.tax" name="tax" type="number" />
+      </div>
+      <div class="form-group">
+        <label for="subtotal">Total</label>
+        <p style="background-color:rgb(222, 223, 239);">{{invoice.amount + invoice.amount * invoice.tax / 100}}</p>
+      </div>
+    </div>
+<div class="form-row">
+    <div class="form-actions">
+      <button style="background-color: #61affe; color: white;" type="button" (click)="back()">Back</button>
+    </div>
+    <div class="form-actions">
+      <button style="background-color: #fca130; color: white;" type="button" (click)="save()">Save</button>
+    </div>
+  </div>
+  </form>
+</div>

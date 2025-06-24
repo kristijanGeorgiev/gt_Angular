@@ -1,0 +1,112 @@
+<div *ngIf="booking" class="form-container">
+  <h3 class="section-title">Booking Details</h3>
+  <div class="form-row">
+    <div class="form-group">
+      <label>Client</label>
+      <p style="background-color:#fafafa;">{{clientName}}</p>
+    </div>
+    <div class="form-group">
+      <label>Address</label>
+      <p style="background-color:#fafafa;">{{clientAddress}}</p>
+    </div>
+    <div class="form-group">
+      <label>Phone</label>
+      <p style="background-color:#fafafa;">{{clientPhoneNumber}}</p>
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Contact Name</label>
+      <input type="text" [(ngModel)]="booking.contactName" name="contactName" />
+    </div>
+
+    <div class="form-group">
+      <label>Address</label>
+      <input type="text" [(ngModel)]="booking.address" name="address" />
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="form-group">
+      <label>Service Name</label>
+      <p>{{booking.serviceName}}</p>
+    </div>
+
+    <div class="form-group">
+      <label>Description</label>
+      <input style="background-color:#fafafa;" type="text" [(ngModel)]="booking.description" name="description" />
+    </div>
+  </div>
+
+<div class="form-row">
+  <div class="form-group">
+      <label>Booking Date</label>
+      <input type="date" [(ngModel)]="booking.bookingDate" name="bookingDate" />
+  </div>
+  <div class="form-group">
+      <label>Service Date</label>
+      <input type="date" [(ngModel)]="booking.serviceDate" name="serviceDate" />
+    </div>
+  <div class="form-group">
+      <label>Status</label>
+      <select [(ngModel)]="booking.bookingStatusId" name="bookingStatusId">
+        <option *ngFor="let status of bookingStatuses" [value]="status.id">
+          {{ status.statusName }}
+        </option>
+      </select>
+    </div>
+</div>
+
+    <div class="form-row">
+
+      <div class="form-group">
+        <label>Work Positions</label>
+        <select [(ngModel)]="workpositionFilter" name="workpositionFilter" (change)="loadAvailableEmployees()" class="input-field">
+          <option value="">All Positions</option>
+          <option *ngFor="let pos of workpositions" [value]="pos.id">
+            {{ pos.name }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <label>Available Employees</label>
+        <select [(ngModel)]="selectedEmployeeId" name="AvailableEmployees" class="input-field">
+          <option *ngFor="let employee of employees" [value]="employee.userId">
+            {{ employee.firstName }} {{ employee.lastName }}
+          </option>
+        </select>
+      </div>
+
+      <div class="form-group">
+        <button style="background-color:#fafafa;" type="button" class="assign-button" (click)="assignEmployee()">Assign</button>
+      </div>
+    </div>
+
+    <div class="form-row">
+       <div class="form-group" *ngIf="booking?.assignedEmployees?.length">
+           <label style="margin-top: 10px;">Assigned Employees</label>
+           <ul style="padding-left: 16px; margin: 0;">
+            <li *ngFor="let emp of booking.assignedEmployees">
+               <span>{{ emp.firstName }} {{ emp.employeeId }} ({{ emp.email }})</span>
+               <button type="button" (click)="removeAssignedEmployee(emp.employeeId)" 
+                     style="background: none; border: none; color: red; font-size: 1.2em; cursor: pointer;" 
+                     title="Remove">
+                <i class="fa fa-trash"></i>
+               </button>
+            </li>
+           </ul>
+      </div>
+      </div>
+
+
+      <div class="form-row">
+         <div class="form-group">
+             <button class="back-button" type="button" (click)="back()">Back</button>
+          </div>
+         <div class="form-group">
+             <button class="save-button" type="button" (click)="saveChanges()">Approve</button>
+         </div>
+      </div>
+</div>

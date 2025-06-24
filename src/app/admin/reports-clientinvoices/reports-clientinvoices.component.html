@@ -1,0 +1,70 @@
+<div style="background-color: white; padding: 15px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 0px;">
+    <div class="filters">
+      <label>
+        Search client:
+  <input type="text" [(ngModel)]="clientSearchTerm" (input)="filterClients()" placeholder="Search clients..." style="padding: 6px; width: 200px;" />
+      </label>
+      <label>
+  Choose client:
+  <select [(ngModel)]="clientFilter" style="padding: 6px; width: 200px; margin-top: 4px;">
+    <option value="">All Clients</option>
+    <option *ngFor="let client of filteredClients" [value]="client.userId">
+      {{ client.firstName }} {{ client.lastName }}
+    </option>
+  </select>
+</label>
+      <label>
+       From Date:
+       <input type="date" [(ngModel)]="fromDateFilter" />
+      </label>
+
+     <label>
+       To Date:
+       <input type="date" [(ngModel)]="toDateFilter" />
+     </label>
+
+     <button style="background-color: blue; color: white;" (click)="applyFilters()">Apply</button>
+     <button style="background-color: rgb(186, 186, 186); color: white;" (click)="clearFilters()">Clear</button>
+     <button type="button" class="btn btn-secondary ml-2" (click)="exportToPDF()">Export</button>
+     <button style="background-color: blue; color: white;" (click)="back()">Back</button>
+  </div>
+
+    <div style="margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+</div>
+  </div>
+      <div id="pdfTable" class="p-3">
+      <h3 style="margin: 0; color: #2c2c2d;">Client: {{clientFilter}}</h3>
+            <p style="margin: 0; color: #2c2c2d;">From Date {{fromDateFilter}}  To Date {{toDateFilter}}</p>
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;">ID</th>
+        <th style="text-align: left; cursor: pointer;">Contact</th>
+        <th style="text-align: left; cursor: pointer;">Service</th>
+        <th style="text-align: left; cursor: pointer;">IssuedDate</th>
+        <th style="text-align: left; cursor: pointer;">DueDate</th>
+        <th style="text-align: left; cursor: pointer;">Quantity</th>
+        <th style="text-align: left; cursor: pointer;">Amount</th>
+        <th style="text-align: left; cursor: pointer;">Tax</th>
+        <th style="text-align: left; cursor: pointer;">Total</th>
+        <th style="text-align: left;">IsPaid</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let invoice of filteredInvoices">
+        <td style="text-align: left;">{{ invoice.invoiceID }}</td>
+        <td style="text-align: left;">{{ invoice.contactName }}</td>
+        <td style="text-align: left;">{{ invoice.serviceName }}</td>
+        <td style="text-align: left;">{{ invoice.issuedDate | date}}</td>
+        <td style="text-align: left;">{{ invoice.dueDate | date }}</td>
+        <td style="text-align: left;">{{ invoice.quantity }}</td>
+        <td style="text-align: left;">{{ invoice.amount}}</td>
+        <td style="text-align: left;">{{ invoice.tax }}</td>
+        <td style="text-align: left;">{{ invoice.amount + invoice.amount * invoice.tax / 100}}</td>
+        <td style="text-align: left;">{{ invoice.isPaid}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+</div>

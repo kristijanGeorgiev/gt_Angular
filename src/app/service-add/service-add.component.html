@@ -1,0 +1,21 @@
+<div>
+    <h2>Add New Service</h2>
+    <form (submit)="addService()">
+        <label for="name">Name:</label>
+        <input [(ngModel)]="newService.name" name="name" required />
+        <label for="description">Description:</label>
+        <input [(ngModel)]="newService.description" name="description" required />
+        <label for="price">Price:</label>
+        <input [(ngModel)]="newService.price" name="price" type="number" required />
+        <label for="isAvailable">isAvailable:</label>
+        <input [(ngModel)]="newService.name" name="isAvailable" required />
+        <label for="image">image:</label>
+        <input [(ngModel)]="newService.name" name="image" required />
+        <label for="unitOfMeasure">unitOfMeasure:</label>
+        <input [(ngModel)]="newService.name" name="unitOfMeasure" required />
+        <div style="margin-top: 10px;">
+            <button type="submit">Save Service</button>
+            <button type="button" class="back-button" (click)="goToServiceList()">Back</button>
+          </div>
+    </form>
+</div>

@@ -1,0 +1,64 @@
+<div *ngIf="user" class="form-container">
+  <h3 class="form-title">Employee</h3>
+
+  <form class="employee-form" #formRef="ngForm">
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="firstName">First Name</label>
+        <input [(ngModel)]="user.firstName" name="firstName" type="text" required #firstNameRef="ngModel" />
+        <div *ngIf="firstNameRef.invalid && firstNameRef.touched" class="error-message">
+          First Name is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="lastName">Last Name</label>
+        <input [(ngModel)]="user.lastName" name="lastName" type="text" required #lastNameRef="ngModel" />
+        <div *ngIf="lastNameRef.invalid && lastNameRef.touched" class="error-message">
+          Last Name is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input [(ngModel)]="user.email" name="email" type="email" required #emailRef="ngModel" />
+        <div *ngIf="emailRef.invalid && emailRef.touched" class="error-message">
+          A valid Email is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="password">Password</label>
+        <input [(ngModel)]="user.password" name="password" type="password" required #passwordRef="ngModel" />
+        <div *ngIf="passwordRef.invalid && passwordRef.touched" class="error-message">
+          Password is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-row">
+      <div class="form-group">
+        <label for="address">Address</label>
+        <input [(ngModel)]="user.address" name="address" type="text" required #addressRef="ngModel" />
+        <div *ngIf="addressRef.invalid && addressRef.touched" class="error-message">
+          Address is required.
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="phoneNumber">Phone Number</label>
+        <input [(ngModel)]="user.phoneNumber" name="phoneNumber" type="tel" required #phoneRef="ngModel" />
+        <div *ngIf="phoneRef.invalid && phoneRef.touched" class="error-message">
+          Phone Number is required.
+        </div>
+      </div>
+    </div>
+
+    <div class="form-actions">
+      <button type="button" [disabled]="!formRef.form.valid" (click)="register()">
+        Register
+      </button>
+    </div>
+
+  </form>
+</div>

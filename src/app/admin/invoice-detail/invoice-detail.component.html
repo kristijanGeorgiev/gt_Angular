@@ -1,0 +1,41 @@
+<div *ngIf="invoice" style="max-width: 700px; margin: auto; background-color: white; padding: 30px; border: 1px solid #ccc; font-family: Arial, sans-serif;">
+  <h2>Company Name:{{ companyInfo?.companyName}}</h2>
+  <p>Address:{{ companyInfo?.companyAddress }}</p>
+  <p>Phone: {{ companyInfo?.phoneNumber }}</p>
+  <p>Tax Number: {{ companyInfo?.taxNumber }}</p>
+  <p>Bank: {{ companyInfo?.bank}}</p>
+  <p>Bank Account: {{ companyInfo?.bankAccount}}</p>
+
+  <div style="text-align: center; margin-bottom: 40px;">
+    <h1 style="margin: 0; color: #2c2c2d;">INVOICE</h1>
+    <p style="color: gray;">Thank you for choosing our service!</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+    <div>
+      <p><strong>Invoice ID:</strong> {{ invoice?.invoiceID }}</p>
+      <p><strong>Booking ID:</strong> {{ invoice?.bookingID }}</p>
+    </div>
+    <div style="text-align: right;">
+      <p><strong>Issued Date:</strong> {{ invoice?.issuedDate }}</p>
+      <p><strong>Due Date:</strong> {{ invoice?.dueDate }}</p>
+    </div>
+  </div>
+
+  <hr style="margin: 20px 0;" />
+
+  <div style="margin-bottom: 20px;">
+    <p><strong>Bill To:</strong></p>
+    <p>{{ clientName }}</p>
+    <p>{{ clientAddress }}</p>
+  </div>
+
+  <div style="display: flex; justify-content: space-between; margin-bottom: 20px;">
+  <p><strong>Service:</strong> {{ serviceName }}</p>
+  <p><strong>Amount:</strong> ${{ invoice?.amount }}</p>
+  </div>
+
+  <div style="text-align: center; margin-top: 40px; color: gray;">
+    <p>For questions about this invoice, contact supporthomeservices.com</p>
+  </div>
+</div>

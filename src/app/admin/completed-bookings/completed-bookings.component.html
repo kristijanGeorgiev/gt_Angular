@@ -1,0 +1,39 @@
+<div style="background-color: white; padding: 20px; border-radius: 4px; box-shadow: 0 0 8px rgba(0,0,0,0.1);">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; margin-top: 0px;">
+    <h3 class="form-title" style="margin: 0; text-align: left; color: #2c2c2d;text-align: left;">Create Invoices</h3>
+    <div style="margin-bottom: 15px; display: flex; gap: 15px; align-items: center;">
+</div>
+  </div>
+  <table style="width: 100%; border-collapse: collapse;">
+    <thead>
+      <tr>
+        <th style="text-align: left; cursor: pointer;">ID</th>
+        <th style="text-align: left; cursor: pointer;">BookingDate</th>
+        <th style="text-align: left; cursor: pointer;">ServiceDate</th>
+        <th style="text-align: left; cursor: pointer;">Service</th>
+        <th style="text-align: left; cursor: pointer;">Contact</th>
+        <th style="text-align: left; cursor: pointer;">Address</th>
+        <th style="text-align: left; cursor: pointer;">Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let booking of bookings">
+        <td style="text-align: left;">{{ booking.bookingID }}</td>
+        <td style="text-align: left;">{{ booking.bookingDate | date}}</td>
+        <td style="text-align: left;">{{ booking.serviceDate | date }}</td>
+        <td style="text-align: left;">{{ booking.serviceName }}</td>
+        <td style="text-align: left;">{{ booking.contactName }}</td>
+        <td style="text-align: left;">{{ booking.address }}</td>
+        <td style="text-align: left;">{{ booking.description }}</td>
+        <td>
+          <button 
+            (click)="createInvoice(booking)" 
+            style="margin-right: 5px; background-color: rgb(97, 175, 254); color: white; border: none; padding: 5px 10px; border-radius: 4px;">
+            Invoice
+          </button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

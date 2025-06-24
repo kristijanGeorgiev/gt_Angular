@@ -1,0 +1,63 @@
+<div *ngIf="statistics" class="dashboard-container">
+
+<div class="dashboard-boxes-row">
+  <div class="dashboard-box client-box">
+    <h4><i class="fas fa-users"></i> Clients: {{ statistics.totalClients }}</h4>
+  </div>
+  <div class="dashboard-box client-box">
+    <h4><i class="fas fa-calendar-check"></i> Total Bookings: {{ statistics.totalBookings }}</h4>
+  </div>
+  <div class="dashboard-box client-box">
+    <h4><i class="fas fa-dollar-sign"></i> Total Revenue: ${{ statistics.totalRevenue | number: '1.0-2' }}</h4>
+  </div>
+  <div class="dashboard-box client-box">
+    <h4><i class="fas fa-clock"></i> Pending Bookings: {{ statistics.pendingBookings }}</h4>
+  </div>
+  <div class="dashboard-box client-box">
+    <h4><i class="fas fa-file-invoice-dollar"></i> Pending Invoices: {{ statistics.pendingInvoices }}</h4>
+  </div>
+</div>
+
+
+  <div class="dashboard-boxes">
+  
+       <div class="chart-box">
+        <h4>Bookings by Service Type</h4>
+        <canvas baseChart
+          [data]="{
+            labels: bookingsByServiceLabels,
+            datasets: [{ data: bookingsByServiceData, backgroundColor: ['#4caf50', '#f39c12', '#e74c3c', '#2980b9', '#9b59b6', '#2ecc71'] }]
+          }"
+          [type]="'bar'">
+        </canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4>Monthly Booking Trends</h4>
+        <canvas baseChart
+          [data]="{
+            labels: monthlyBookingLabels,
+            datasets: [{ label: 'Bookings', data: monthlyBookingData, borderColor: '#2980b9', backgroundColor: '#3498db', fill: true }]
+          }"
+          [type]="'line'">
+        </canvas>
+      </div>
+
+      <div class="chart-box">
+        <h4>Revenue by Month</h4>
+        <canvas baseChart
+          [data]="{
+            labels: revenueLabels,
+            datasets: [{ label: 'Revenue', data: revenueData, borderColor: '#16a085', backgroundColor: '#1abc9c'}]
+          }"
+          [type]="'bar'">
+        </canvas>
+      </div>
+
+    </div>
+
+  </div>
+
+<div class="pending-bookings-section">
+  <app-pending-bookings></app-pending-bookings>
+</div>

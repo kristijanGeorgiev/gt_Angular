@@ -1,0 +1,26 @@
+<div class="card-container">
+  <div class="card-header">
+    <h3>Booking Status</h3>
+    <button class="add-btn" (click)="addBookingStatus()">Add</button>
+  </div>
+
+  <table class="styled-table">
+    <thead>
+      <tr>
+        <th (click)="sortByID()">ID</th>
+        <th>Status Name</th>
+        <th class="actions-column">Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let status of statuses">
+        <td>{{ status.id }}</td>
+        <td>{{ status.statusName }}</td>
+        <td class="actions-column">
+          <button class="edit-btn" (click)="editBookingStatus(status.id)">Edit</button>
+          <button class="delete-btn" (click)="deleteBookingStatus(status)">Delete</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
